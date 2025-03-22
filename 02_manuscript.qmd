@@ -1,0 +1,340 @@
+---
+title: "Alignment, Aid, and Agression: Bringing Strategic Interdependence into the Two-Good Theory of Foreign Policy"
+author: "Miles D. Williams, Denison University (williamsmd@denison.edu)"
+date: "September 6, 2024"
+abstract: "**Abstract**: Why do countries become more or less interested in changing the international status quo? The two-good theory of foreign policy has a good track-record in answering this question. However, the theory elides strategic interdependence in country foreign policies. After formalizing a game-theoretic extension to the two-good theory to accommodate strategic interactions among countries, novel predictions emerge. Consistent with the classic two-good theory, countries are predicted to become more change-seeking in their foreign policies as they become more powerful and more dissatisfied with the international system. What is new is that countries are predicted to become less change-seeking the more their foreign policy goals align with other countries. These predictions are put to the test with monadic panel data on two foreign policy behaviors argued to be associated with change-seeking foreign policy: militarized interstate dispute initiation and foreign aid commitments. The results are consistent with the theoretical model’s predictions. While country dispute initiation and foreign aid spending increase with power and systemic dissatisfaction, they decline with greater foreign policy alignment. These findings demonstrate the continued usefulness of the two-good theory, and also the value of revising it to account for strategic interdepended as countries make their foreign policies."
+bibliography: '../01_citations/ref.bib'
+biblio-style: apsr
+format: 
+  docx:
+    reference-doc: word_docx_new_template.docx
+    number-sections: false
+    number-depth: 3
+    fig-dpi: 500
+    fig-align: center
+execute: 
+  echo: false
+  warning: false
+  message: false
+---
+
+***Keywords***: Foreign Policy, Conflict, Aid
+
+\clearpage
+
+# Introduction
+
+Why does a country adopt a foreign policy that is more or less revisionist at different points in time? Several theories offer an answer to this question; though each has met with varying degrees of success when confronted with empirical data. One of the more successful is the *two-good theory of foreign policy* laid out in greatest detail by @palmer2011theory. The two-good theory (referred to as "TGT" from here on) posits that when countries make foreign policy choices, they act in accordance with their level of dissatisfaction with the international system and, under a resource constraint, optimize their foreign policy choices given their preferences and the efficiency with which they can convert resources into foreign policy outcomes. As the "two-good" portion of the name of the theory suggests, TGT contends that this optimization problem centers on a country striking the right balance in its foreign policy between *two goods* it seeks to produce: *maintenance* of aspects of the international system that it likes and *change* to aspects of the international system that it dislikes. This theory has a commendable track-record, yielding many different falsifiable hypotheses, most of which have been supported by empirical analysis [@palmer2002give; @machain2013effect; @morgan2003protect; @palmer2011theory].
+
+However, the basic TGT framework elides a fundamental feature of foreign policy, namely, *strategic interdependence*. When countries make their foreign policies, they do not operate in isolation. To the contrary, they make their choices alongside those of other countries in the international system—choices that in turn influence how much change or maintenance a single country is able to produce through its own actions. This means that the degree to which a country adopts more change-seeking foreign policies relative to maintenance-seeking foreign policies is both a product of its preferences and resources, on the one hand, and the foreign policies of other countries, on the other hand. The goal of this study is to see what can be learned by endogenizing the foreign policies of countries within the TGT framework, what new predictions might emerge from this exercise, and then to put some of these predictions to the test with empirical data. The results show that endogenizing the foreign policies of countries in the international system—in effect, treating foreign policy outputs as a general equilibrium problem—yields predictions that are consistent with the original TGT framework, but also a new prediction unique to the endogenized version of the theory presented here.
+
+These old and new predictions are put to the test by looking at two outcome variables argued in past work to correspond to change-seeking, as opposed to maintenance-seeking, foreign policy: militarized interstate dispute initiation and foreign aid allocation. Consistent with the classic TGT framework, it is hypothesized that countries will increase their change-seeking activities in proportion to their level of dissatisfaction with the international system and their level of power. Going beyond the classic framework, the endogenized version of TGT further predicts that a third factor---systemic alignment---will also condition change-seeking activities. The argument is that, the more aligned on average a given country is with the foreign policies of other countries in the international system, the less effort it will put into change-seeking activities. Statistical models using measures of each of these three concepts as predictors are consistent with the endogenized TGT framework. In particular, the results show that countries are more likely to both initiate militarized interstate disputes and to give more total foreign aid in proportion to their dissatisfaction and power, and in inverse proportion to their degree of systemic alignment.
+
+The study proceeds by first providing some background on TGT. In its presentation by @palmer2011theory, TGT can be expressed as a simple mathematical model of a country's foreign policy optimization problem. The fact that the theory is representable in this way makes it easy to impose a game-theoretic extension on the framework, which is done in a following section. This updated model incorporates a foreign policy alignment term, which can be positive or negative, that links the foreign policy activities of countries in the international system. Analysis of the updated model shows that a unique Nash equilibrium in foreign policy exists and that it is well-behaved. A numerical Monte Carlo analysis using this game-theoretic model as a data-generating process reveals three general predictions that map country power, dissatisfaction, and foreign policy alignment to the foreign policy choices of a given country in equilibrium. While power and dissatisfaction are positive predictors of change-seeking foreign policy, alignment is a negative predictor of change-seeking foreign policy.
+
+As already discussed, these predictions are then tested using two different foreign policy outputs proposed by @palmer2011theory to reflect change-seeking activities by countries. The results are consistent with the endogenized version of the TGT framework.
+
+The study then concludes with a discussion of the findings and their implications. The results show the continued usefulness of TGT as a generalized framework for making sense of the foreign policies that countries adopt, and, moreover, the value of incorporating strategic interdependence into the TGT framework. Of course, these findings do not confirm that the refined version of TGT is the correct theory for explaining why countries become more or less revisionist at different points in time. However, they demonstrate the utility of general-equilibrium thinking and theorization of international politics. Hopefully this study will inspire others to think more deeply about how to bring general-equilibrium approaches to the problems of international politics and foreign policy.
+
+# The Two-Good Theory in Brief
+
+Why do countries adopt the foreign policy choices that they do at certain points in time? Why did the United States withdraw troops from Afghanistan, Russia invade Ukraine, or China expand its foreign aid spending to levels that exceed the spending of even the most generous traditional foreign aid donor? We could bring new insight into these questions by studying them in isolation, but we can also situate them within a more general theory of foreign policy. The TGT framework developed by @palmer2002give represents the latter approach.
+
+The TGT framework treats states as rational egoists with well-defined preferences that make choices with the goal of maximizing their self-interest. It further situates country choices within a multi-dimensional issue space with theoretically infinite issues a country might have preferences over at a given point in time. While the issue space knows no bounds, @palmer2011theory contend that any given issue can be categorized on the basis of whether a country likes or dislikes the current status quo with respect to that issue. Thus, the foreign policy behaviors of countries, regardless of the number of issues considered at a given point in time, can be reduced to two kinds of *composite* goods (or goals) countries seek to produce through their foreign policies. The first is called *maintenance*, and the second is called *change*. Activities directed toward maintaining aspects of the international status quo that a country prefers are called *maintenance-seeking*, while those directed toward revising aspects of the international status quo that a country dislikes are called *change-seeking*.
+
+As a theory of foreign policy, the TGT framework is distinct from theories of international politics. Unlike the latter, TGT seeks to explain how countries navigate the trade-offs associated with allocating more resources toward different, possibly competing, foreign policy goals. It contends that countries are constrained by finite resources, which forces countries to choose how to spend their resources to accomplish their objectives. In short, a country cannot do everything that it wants to do all at once. Progress in one area necessarily comes at the expense of progress in another.
+
+In addition, the TGT framework holds that countries face differential efficiency in changing versus maintaining the international status quo. With respect to efficiency, TGT holds, first, that maintenance is easier to produce than change—that is, a country has to burn through more resources to produce some amount of change than it must burn through to produce an equal amount of maintenance. Second, even though change is harder to produce than maintenance, the assertion is made countries become more efficient at producing change as they become more powerful.
+
+Under these material constraints on their ability to pursue their foreign policy goals, TGT further allows for countries to be more or less dissatisfied with the international system at a given point in time. A country's level of dissatisfaction determines its expected returns from allocating resources toward a certain amount of change or maintenance. All else equal, the more dissatisfied a country is, the greater return it can expect from directing more of its resources toward change-seeking foreign policies relative to maintenance.
+
+Taking these factors together, the TGT framework yields two general predictions. First, countries will become disproportionately more change-seeking as they become more powerful. Second, countries will become disproportionately more change-seeking as they become more dissatisfied.
+
+The TGT perspective is distinct from other theories, such as systemic politics [@braumoeller2013great], neorealism [@waltz1996international], power-transition theory [@organski1968world], and Gilpin's theory of change in international politics [-@gilpin1981war]. While each of these theoretical frameworks offers an account for why countries might become more or less revisionist, they view the actions that states can take in different ways. For instance, power-transition theory and Gilpin's theory of change treat revisionism as dichotomous rather than a continuum. That is, a country is either dissatisfied with the international system and thus seeks to change it, or else a country is content and thus seeks to maintain the status quo. In principal, that means these perspectives ignore the role of trade-offs and, hence, choice in foreign policy. In contrast, the two-good theory relaxes this assumed dichotomy of country preferences by supposing that a country's foreign policy objectives are multi-dimensional. Countries can be both satisfied with certain aspects of the international system and also dissatisfied with others. This means countries can be both revisionist in some issues and status-quo-preserving in others.
+
+Alternatively, systemic politics as laid out by @braumoeller2013great does allow for country preferences to be multi-dimensional. However, in this perspective the only choice countries have to make is how active ("interventionist") they will be in international politics, where action is defined as the host of activities a country might engage in to change the structure of the international system. In short, in this perspective countries can be only more or less revisionist. To choose maintenance of the status quo would effectively mean that a country is completely isolationist or inactive on the international stage.
+
+TGT does have some points in common with these other perspectives. One of the most important is that the distribution of power features prominently across these theories. For @gilpin1981war, the key factor determining whether a country is revisionist or not is whether the benefits it receives from the international system are commensurate with its level of power. Meanwhile, for @braumoeller2013great, power does not directly influence how interventionist a country is, but its level of power influences how successful a country is in changing the international system. As already noted, within the TGT framework, greater power means that a country has more resources that it can burn through to produce maintenance and change, and it also means that a country will be able to produce change with greater efficiency.
+
+Ultimately, the points of overlap and divergence among these perspectives are rooted in their differing goals. @gilpin1981war seeks to explain not only how dissatisfaction drives revisionism, but also where dissatisfaction comes from. That is, Gilpin is interested in why countries are either satisfied or dissatisfied at different points in time. @braumoeller2013great similarly is interested in where dissatisfaction arises, but he is also interested in the endogeneity that exists between dissatisfaction and the structure of the international system over time. In short, Gilpin wants to explain why countries are dissatisfied while Braumoeller wants to understand how dissatisfaction and changes to the international system feedback into each other. For @palmer2011theory, the TGT framework is not concerned with explaining the roots of dissatisfaction, nor is it a dynamic theory of change. It takes country dissatisfaction and the state of the international system as given, and then it seeks to explain why countries adopt the mix of change-seeking and maintenance-seeking foreign policies that they do at a particular moment in time.
+
+The differences among these perspectives are not mentioned here for the purpose of adjudicating which is best. The point, rather, is to highlight that TGT, like any theory, is oriented around resolving a particular puzzle. The puzzle that TGT seeks to resolve is how countries, operating under scarcity, allocate their resources to further their foreign policy goals.
+
+# What Is Missing in the Two-Good Theory?
+
+As noted in the introduction, the TGT framework has generated a number of empirically supported predictions for the particular things it is intended to explain [@palmer2002give; @palmer2011theory; @morgan2003protect; @machain2013effect]. Despite these successes, a key missing piece of TGT is an adequate accounting of strategic interdependence in foreign policy. To be fair, @palmer2011theory speculate about what strategic interdependence might imply. As they note:
+
+> \[W\]e assume that the level of threat coming from other states affects state preferences regarding change and maintenance. We assume that as the level of threat increases, ceteris paribus, the relative preference for maintenance over change also increases. That is, state preferences are partially determined by the actions, occurring and expected, of other states. A state that faces no challenges to its interests will prefer to pursue more change than will a state that is threatened with adverse alterations on many issues, all else being equal. This assumption also seems reasonable. If no other is trying to bring about adverse changes on any issues about which a state cares, it has no reason to pursue any maintenance. On the other hand, a state that faces many challenges on many issues will want to pursue a great deal of maintenance (32).
+
+This is a clear articulation of the idea that a country's foreign policy choices are, in part, predicated on the choices made by other countries. However, when Palmer and Morgan later formalize their argument as a mathematical model this nascent idea is folded into the exogenous preferences of a given country. Is this the best way to proceed? The argument made here is, no.
+
+In later extensions of TGT, the idea that one country's foreign policies might constitute a "shock" to the policies of another is taken up more formally by @machain2013effect. However, this shock is treated as an exogenous term, meaning that, again, true strategic interdependence remains unaccounted for. Furthermore, this shock is always positive, but country activities may not always be mutually beneficial.
+
+This gap in the theory is significant, because it explicitly ignores a fundamental fact of foreign policy, namely, that country foreign policy choices are endogenous. This endogeneity implies that foreign policy reflects a general equilibrium in the international system at a given point in time. Failure to account for this endogeneity means that certain "ceteris paribus" predictions of TGT may not hold in the real world, or that certain presumed predictions (like the idea that higher threat leads to more maintenance-seeking) may not logically follow from the theory's basic assertions.
+
+This is the classic problem of using partial equilibrium analysis to study a general equilibrium problem. A partial equilibrium approach fails to consider how a change in one factor may lead other factors to change as well, and then how changes to these other factors then lead to changes in the first. Thus, a key question moving forward is how to best account for endogeneity in foreign policy-making. 
+
+Given the complexity that comes along with endogenizing foreign policy, it will be valuable to formalize the theory as a mathematical model. This will ensure that predictions deductively follow from starting assumptions. The next section introduces the original two-good model based on Palmer and Morgan's [-@palmer2011theory] formulation. Next, a game-theoretic extension of this model is introduced that incorporates how one country's balance of change- to maintenance-seeking in foreign policy affects another country's ability to realize its own goals through its own balance of change- to maintenance-seeking. Following its presentation, a Monte Carlo analysis is done to highlight the comparative statics that result from changing the balance of power between countries under different arrangements of actor preferences with respect to the international system and the degree of alignment between their goals. This exercise produces predictions that deductively follow from the theories core assertions, which are then put to the test.
+
+# The Two-Good Theory Formalized
+
+As noted in the previous section, TGT makes a few basic assumptions about countries in the international system. The first is the idea that states can be treated as rational egoists---that is, states are unitary, self-interested actors that seek to maximize their utility.[^1] To these assumptions, TGT adds that each country faces the problem of having to make different foreign policy choices under a condition of scarcity. These foreign policy choices center between two kinds of outcomes countries seek to achieve: (1) to maintain parts of the international system that they like and (2) to change parts of the international system that they dislike.
+
+[^1]: These assumptions (the rationality of international actors and the unitary-actor assumption) are hotly debated subjects in the IR literature. However, as dubious as these ideas may be, their merit lies in the fact that they provide animating starting principals for thinking about how countries make choices under the condition of scarcity in the international system.
+
+A country may exercise a mix of revisionist and maintenance policies at a given point in time. However, as summarized in the previous section, two factors can lead states to become more change-seeking or maintenance-seeking, all else equal. One these factors is the balance of power. The two-good theory holds that as countries choose how to optimally direct their limited resources toward maintenance and change, greater power confers more resources to direct toward foreign policy generally, and a comparative advantage in promoting change specifically. The implication is that as a country's power increases change-seeking activities will comprise a greater share of its overall foreign policy, all else equal.
+
+The second factor that influences a country's foreign policy is its level of dissatisfaction with the current international status quo. All else equal, an increase in dissatisfaction will make a country more change-seeking relative to maintenance-seeking. What is special about this additional factor is that it makes it possible for the more powerful of two countries to be more maintenance-seeking in its foreign policy while the weaker is more change-seeking, assuming the weaker power is generally dissatisfied while the stronger is not.
+
+To capture these insights, @palmer2011theory represent their theory as a straightforward formal model of the optimization problem facing states. The one they adopt would be familiar to most undergraduate microeconomics students: Cobb-Douglas. This model has a number of properties that are ideal for representing the choices and incentives of states. Most importantly, the model is quasi-concave and monotone, meaning that country utility increases smoothly in both maintenance and change.
+
+The two-good model specification used by @palmer2011theory is as follows. A country's utility is defined as
+
+$$
+U = Q_m^{\pi_1} \times Q_c^{\pi_2}.
+$$ {#eq-model1}
+
+A country's objective problem is to identify the optimal quantity of maintenance or change (denoted $Q_m$ and $Q_c$ respectively) to produce given a finite budget $b \in \mathbb{R}_+$, where $b = Q_m + \Omega Q_c$.
+
+As a country spends this budget, three parameters will bear on its choice. The first two are the $\pi$ parameters, which capture how important maintenance and change are to the country in question. These are defined such that $(\pi_1, \pi_2) \in \mathbb{R}_+^2$. These parameters capture the level of dissatisfaction a country has with respect to the international status quo. The the greater $\pi_2$ is relative to $\pi_1$, the more the country in question is dissatisfied with the state of the international system as a whole, and so the greater its preference for promoting change-seeking foreign policies.
+
+In addition to country preferences with respect to the international system, the third parameter that influences foreign policy is $\Omega \in \mathbb{R}_+$, which captures the comparative advantage a country obtains with increasing power. @palmer2011theory assume that as $b$ increases, $\Omega$ decreases; however, they never specify exactly the form that this relationship takes, but there are some simple ways this can be specified (more on this later).
+
+To solve for the state's optimization problem, we can set up the Lagrangian as follows:
+
+$$
+L = Q_m^{\pi_1} \times Q_c^{\pi_2} + \lambda (b - Q_m - \Omega Q_c).
+$$ {#eq-l1}
+
+Alternatively, since we can maximize $U$ by maximizing the log of $U$, we can instead solve:
+
+$$
+L = \pi_1\log(Q_m) + \pi_2 \log(Q_c) + \lambda (b - Q_m - \Omega Q_c)
+$$ {#eq-log_lagrangian}
+
+By taking the partial derivative of $L$ with respect to each good and the Lagrangian multiplier, setting each to zero, then solving for each good, we can derive the following demand functions for maintenance and change, respectively:
+
+$$
+\begin{aligned}
+Q_m & = \frac{\pi_1 b}{\pi_1 + \pi_2}, \\
+Q_c & = \frac{\pi_2 b}{(\pi_1 + \pi_2)\Omega}.
+\end{aligned}
+$$ {#eq-long_demand}
+
+Conveniently, and without loss of generality, we can take the added step (which @palmer2011theory do not take) of normalizing the $\pi$ parameters such that $\pi_1 + \pi_2 = 1$ so that demand simplifies to:
+
+$$
+\begin{aligned}
+Q_m & = \pi_1 b, \\
+Q_c & = \frac{\pi_2 b}{\Omega}.
+\end{aligned}
+$$ {#eq-demand}
+
+From these simple equations, we can immediately deduce a few things. The first, is that a country exhausts all of its budget in committing resources to maintenance and change. This fact was imposed directly by the way the Lagrangian was specified, but this would also follow if a country's optimization problem were less restrictive, say, if we used the restriction $b \leqslant q_{m} + \Omega q_c$ instead. Because of the monotonicity of the utility function, a country's best strategy is to use all its available resources for foreign policy to realize its goals.
+
+Second, the greater $\pi_2$ is relative to $\pi_1$ (that is, the more a country is dissatisfied with the international status quo) a country will pull resources away from maintenance in order to produce change. This makes intuitive sense. If a country is generally dissatisfied with the state of the international system, it has little to gain from maintaining the status quo. Conversely, if a country is fairly satisfied with the international system, it makes no sense for it to have a foreign policy disproportionately oriented around promoting change.
+
+Thirdly, as $b$ increases, all of a country's foreign policy outputs increase as well, all else equal. This is also is intuitive. The more resources a country has, the more active in general it will be in foreign policy.
+
+Fourth, since as $b$ increases $\Omega$ decreases, a country's change-seeking foreign policies will increase at a pace greater than that of maintenance-seeking as a country becomes more powerful, all else equal. This final prediction is clearer to see if we specify an explicit function defining how changes to $b$ map to changes in $\Omega$. A very simple specification is $\Omega = 1 / b$. By substituting this for $\Omega$, demand for change now can be expressed as the following equation, whose form clearly shows an exponential relationship between power and change-seeking foreign policy.
+
+$$
+Q_c = \frac{\pi_2 b}{\frac{1}{b}} = \pi_2 b^2.
+$$ {#eq-demand1}
+
+# Bringing Strategic Interdependence into the Fold
+
+In its original form, the two-good model provides a clean set of predictions that follow intuitively from its basic assumptions. But this perspective ignores how the foreign policy of one country influences and is influenced by the foreign policies of others. Thankfully, it is quite easy to extend the two-good framework to allow for strategic interactions among two or more countries in the international system.
+
+To keep the presentation of the model tractable, for now consider the interaction between just two countries ($i$ and $j$) with respect to their foreign policies. Let countries $i$ and $j$ produce their own unique quantities of maintenance and change, denoted by $q_{im}$ and $q_{ic}$ for country $i$, with similar values for $j$. Further, let the total amount of maintenance and change each achieves be a function of its own foreign policy output along with the output of the other country:
+
+$$
+\begin{aligned}
+Q_{im} & = q_{im} + q_{jm}, \\
+Q_{ic} & = q_{ic} + \alpha q_{jc}.
+\end{aligned}
+$$ {#eq-new_identities}
+
+This new specification for the maintenance and change achieved by country $i$ (with similar quantities for $j$) reflects the main innovation on the original TGT framework proposed in this paper, namely, that the maintenance and change realized by a country is directly dependent on the maintenance- and change-seeking activities of other countries.
+
+This formulation also captures a second innovation, which is the degree of foreign policy alignment between countries and how it determines whether countries' activities are mutually beneficial or else adversarial. First, note that total maintenance is a simple sum of the maintenance produced by each country. Anyone familiar with a standard public goods problem should see that in this formulation, supporting the current status quo is like a public good, which is to say, maintenance is non-rival and non-excludable.
+
+The picture looks different for change. Unlike the equation for total maintenance produced, the equation for total change produced contains the parameter $\alpha$, where $\alpha \in (-1, 1)$, captures the foreign policy alignment between $i$ and $j$. It acts as a weight on the change produced by one country on the total change another is able to realize. As $\alpha \to 1$, country $i$ and $j$'s foreign policy activities become more aligned. That means, on net, country $i$'s change-seeking activities support $j$'s, and vice versa. However, as $\alpha \to -1$, $i$ and $j$'s foreign policies become more adversarial. That means the more $i$ engages in change-seeking activities, the more this subtracts from $j$'s ability to produce the change that it desires, and vice versa.
+
+At this point, it must be made clear what this particular way of understanding country foreign policies commits us to. For simplicity's sake, imagine a two-dimensional plane where the x-axis represents, say, a country's centrality in the global trade network, and where the y-axis represents, alternatively, the strength of a country's network of alliances. Imagine that the origin of this plane is the current status quo and that each country has some point that lies elsewhere in the plane that denotes an ideal point—an alternative location in this two-dimensional space that it prefers to all other points. Change-seeking foreign policies act as forces that move the international system away from the status quo and toward a country's ideal point. Conversely, maintenance-seeking foreign policies are forces that slow or halt the pace of change away from the present status quo. One way to think of it is that change-seeking foreign policies are a propellant while maintenance-seeking foreign policies are a source of friction or, if one prefers, gravity. The idea is that pursuing more maintenance slows the rate of change toward a country's most preferred location in the issue space. Conversely, pursing more change increases the rate of change toward a country's ideal point.
+
+It may seem odd to some that a country might put the breaks on change at the same time it seeks to alter the status quo, but consider the fact that any kind of policy change often comes with unintended, negative consequences. Another term we might use for this idea is *collateral damage*. A sudden change to the international system can be disruptive in ways that produce unwanted externalities---war, loss of allies, economic uncertainty, and so on. For this reason, even if a country is dissatisfied with the current status quo, it experiences benefits from maintaining things as they are. This is why maintaining the present status quo provides public benefits for all countries (even dissatisfied ones) because maintenance shields countries from the negative and unintended consequences of promoting change.
+
+Whereas maintenance has public goods properties, change has the potential to be a rival good. As noted, change-seeking foreign policies act as a force that moves countries away from the status quo and in the direction of a more preferred location in the issue space. The alignment term, $\alpha$, determines the extent to which the vector of preferred change is similar or different for countries in the international system. If one country wishes to go to a point in the north-east corner of the issue space but another wishes to go to a point in the south-west, the change-seeking foreign policies of these countries will conflict. Conversely, if both countries wish to move to the north-east, their change-seeking activities will be more aligned and mutually beneficial.
+
+What does this way of looking at foreign policy imply? To answer this question, it will be necessary to update the TGT model, analyze it, and see what we can learn. So, let us begin.
+
+First, we can specify the optimization problem for $i$ (with a similar one for $j$) as one of needing to maximize
+
+$$
+U_i = \left[q_{im} + q_{jm}\right]^{\pi_{i1}} \times \left[ q_{ic} + \alpha q_{jc} \right]^{\pi_{i2}}
+$$ {#eq-new_utility}
+
+subject to
+
+$$
+b_i = q_{im} + \Omega_i q_{ic}.
+$$ {#eq-new_restraint}
+
+In addition to now having actor specific values for the $\pi$ parameters, there now is an actor specific budget, denoted by $b_i$ for country $i$, and an actor specific comparative advantage in promoting change, denoted by $\Omega_i$ for country $i$. To make later analysis simpler, assume that $b$ captures the *distribution of resources* between $i$ and $j$ so that $b_i + b_j = 1$. Further allow that $\Omega_i = 1 / b_i$.
+
+With this updated specification, to solve for $i$'s optimal allocation of its budget, we first can set up the Lagrangian:
+
+$$
+L = \left[q_{im} + q_{jm}\right]^{\pi_{i1}} \times \left[ q_{ic} + \alpha q_{jc} \right]^{\pi_{i2}} + \lambda (b_i - q_{im} - q_{ic} / b_i).
+$$ {#eq-new_lagrangian}
+
+Like before, because we can maximize $U_i$, we can maximize its log:
+
+$$
+L = \pi_{i1}\log\left[q_{im} + q_{jm} \right] + \pi_{i2}\log\left[ q_{ic} + \alpha q_{jc} \right] + \lambda (b - q_{im} - q_{ic} / b_i).
+$$ {#eq-new_log_lagrangian}
+
+By taking the partial derivative of $L$ with respect to quantities of goods and the Lagrangian multiplier, setting to zero, and solving for each quantity, we arrive at the following solutions for country $i$ with respect to each of the goods (there are similar equations for $j$):
+
+$$
+\begin{aligned}
+q_{im} & = \pi_{i1} \left[b_i + q_{jm} + \alpha q_{jc} \right] - q_{jm}, \\
+q_{ic} & = \pi_{i2} 
+\left[ b_i^2 + b_i (q_{jm} + \alpha q_{jc})\right] - 
+ \alpha q_{jc}.
+\end{aligned}
+$$ {#eq-m_and_c_br}
+
+These assume an interior solution, but to be more precise the best responses will be bound to non-negative values and, of course, be such that $q_{ic} / b_i + q_{im} = b_i$. This fact also means that we can reduce best-responses to actor's optimal level of change-seeking foreign policy be replacing $q_{im}$ with $b_i - q_{ic} / b_i$. This yields the following solution:
+
+$$
+q_{ic} = b_i\pi_{i2} \left[1 + (\alpha - 1 / b_j) q_{ic}\right] - \alpha q_{jc}.
+$$ {#eq-newbr}
+
+The fact that we can reduce the strategy space for the actors in the model just to their selected output of change also implies that we could, without loss of generality, re-specify the actors' utility functions as an unconstrained optimization problem where:
+
+$$
+U_i = \left[(b_i - \Omega_i q_{ic}) + (b_j - \Omega_j q_{jc})\right]^{\pi_{i1}} \times \left[ q_{ic} + \alpha q_{jc} \right]^{\pi_{i2}}
+$${#eq-newu}
+
+This form is actually quite useful because, unlike the original specification, this expression of actor utility is strictly concave. This concavity further ensures the existence, not just of a Nash Equilibrium (NE), but of a *unique* NE. The existence of a unique NE is critical. If none exists, then the analysis would be intractable and not yield any unique predictions---that is, no testable hypotheses. 
+
+@rosen1965existence offers the relevant proof that a game with continuous strategies has a unique NE if the game is concave. @rosen1965existence also shows that any $n$-player game that is concave as a unique NE. This is especially fortunate since the goal is not just to develop a theoretical framework applicable to dyadic interactions, but to multilateral interactions in the international system.
+
+Concavity offers one more advantage. As @rosen1965existence shows, it is possible to identify the unique NE of a concave $n$-player game using an iterative numerical optimizer. This is also fortunate, because it removes the need to identify the unique NE algebraically---a task that becomes increasingly difficulty for $n > 2$ players. For such an optimizer, all that is required is to select arbitrary strategies for the actors in the model and then, through an iterative process, allow actors to react to the strategies of one another until the system of best-responses converges on a fixed point in the strategy space.\footnote{The relevant computer code for this iterative process was written in the R programming language.}
+
+# Studying the Model and Generating Hypotheses
+
+Having established that the endogenized TGT model yields a unique NE and is generalizable to $n \geq 2$ players, the next step is to analyze the model to generate predictions. First, in order to do this, it will be necessary to specify the general form of the best response of actor $i$ to the strategies of all other actors in the model.
+
+A useful approach is to assume that each actor reacts to the average of all other actors' strategies. Normalizing best-responses in this way is not strictly necessary, but failing to do so has the undesirable property of producing a substantial number of corner solutions.
+
+$$
+q_{ic} = b_i\pi_{i2} \left[1 + \sum_{j = 1}^{n - 1}\frac{(\alpha_{ij} - 1 / b_j) q_{ic}}{n - 1}\right] - \sum_{j = 1}^{n - 1}\frac{\alpha_{ij} q_{jc}}{n - 1}
+$$ {#eq-ncountrydemand}
+
+With a mathematical model of $n \geqslant 2$ countries' optimal foreign policy choices ready-to-hand, the next step is to analyze the model to see what lessons it offers. To provide the most general insights, a Monte Carlo analysis was performed. In the analysis, 10,000 international systems were simulated, each composed of $N = 10$ countries. In each international system, values for the model's exogenous parameters were drawn from uniform distributions over the range of values acceptable for each relevant parameter.
+
+There are three exogenous parameters in the model that were allowed to randomly vary across countries and from one international system to the next. These are (1) the degree of pairwise alignment between each of the countries in the international system, (2) the distribution of power among the countries in the international system, and (3) the level of dissatisfaction each country has with the status quo. For each simulated international system, the endogenous factors (e.g., how much change countries pursue in their foreign policy) are then derived using the computational approach mentioned in the previous section.
+
+This method makes it possible to tease out how levels of the exogenous parameters in the model map to variation in equilibrium outcomes, which can then be assessed with a multiple regression analysis. In short, it serves as a "gut check" for empirical analysis with real-world data. By estimating how exogenous theoretical concepts map to country behavior (which is endogenous) we can generate expectations for what a similar analysis using data on real countries should look like.
+
+Once the data are generated, the level of change-seeking activity by a country $i$ in simulation $m$ is specified as a linear function of its level of power, degree of dissatisfaction, and average alignment with the other countries in the international system:
+
+$$
+q_{imc} = \gamma_0 + \gamma_1 b_{im} + \gamma_2 \pi_{im2} + \gamma_3 \sum_{j = 1}^{N - 1} \frac{\alpha_{ijm}}{n - 1} + \epsilon_{im}
+$$ {#eq-mcmodel}
+
+The values of the slope parameters in the model will tell us how each of the exogenous factors in the theoretical model predict variation in equilibrium change-seeking behavior for a given country across simulations. The results have been visualized in Figure 1, which shows the partial regression slopes from the estimated linear model specified above for each of the exogenous predictors. Residuals have been included to show how the linear model handles the left-over variation in the simulated data. The relationships are clear and quite strong. As we might expect, countries become more change-seeking when they are more powerful and more dissatisfied with the status quo. These are the original predictions made by the classic TGT framework. However, it also is the case that countries become less change-seeking the more on average they are aligned with other countries in the international system.
+
+\clearpage
+
+![](figs/monte_carlo_partials.png)
+
+The relationship between alignment and change-seeking behavior is the inverse of what @palmer2011theory suggest in their discussion of how countries respond to "threats" in their foreign policy choices—presuming of course that threat is the inverse of alignment. As noted in an earlier section of the paper, Palmer and Morgan propose that countries will become more change-seeking the fewer threats they face in the international system. They base this prediction on the idea that maintenance becomes more salient the more other countries try to pull the international system in directions that a country dislikes. So why does the present model tell a different story?
+
+The main reason for the discrepancy is that the degree of alignment in preferences over how to alter the international system at a given point in time determines how much more or less effort a country has to expend in order to meet its demand for change. If a country is generally misaligned with others, it will have to work extra hard to move the international system in its preferred direction to counteract the activities of other countries that are pulling the system in an entirely different direction. Conversely, if a country is aligned with others, it can expend less effort to move the international system in its preferred direction since other countries are pushing the same way.
+
+Taking the results from the Monte Carlo analysis all together, we now have three testable hypotheses:
+
+-   $H_1$: All else equal, the more powerful a country is, the more change-seeking foreign policies it will pursue.
+
+-   $H_2$: All else equal, the more dissatisfied a country is, the more change-seeking foreign policies it will pursue.
+
+-   $H_3$: All else equal, the more average alignment a country has with other countries in the international system, the fewer change-seeking foreign policies it will pursue.
+
+The next section describes the data and design proposed to test these hypotheses.
+
+# Data and Design
+
+To test the three hypotheses proposed in the previous section, an original country-year dataset was compiled. The data consist of country-level observations by year from 1973 to 2013. Country membership is based on the Correlates of War (CoW) state system and the data is accessed and incorporated into the final dataset using the `{peacesciencer}` R package [@peacesciencer-package]. This data was then populated with variables relevant to testing the hypotheses.
+
+## Outcome Variables
+
+The main outcome variables in the analysis are an indicator of militarized interstate dispute (MID) initiation and a count of the total bilateral official development assistance (ODA) commitments made by a country in a given year. The first variable comes from an updated version of the MID dataset by @gibler2016analysis. MID initiation takes the value "1" in years when a country is identified as the originator of at least one dispute against another country, and it is "0" otherwise. Coverage for this variable runs from 1973 to 2010 and contains valid data for 200 countries in CoW system.
+
+Foreign aid data comes from version 3.1 of the AidData core research release [@tierney2011more]. Aid commitments rather than disbursements are used since the former better capture up-to-date policy while the latter tend to be a lagging indicator of donor country priorities. Aid values are in 2011 constant U.S. dollars. Coverage for aid giving runs from 1973 to 2013 and contains valid observations for 49 countries in the CoW system.
+
+MID initiation and ODA commitments are two indicators of change-seeking foreign policies according to @palmer2011theory. The reasoning is intuitive. One would expect that a country that seeks to change the international status quo will be more aggressive in its foreign policy, and one expression of this is greater willingness to start fights with other countries. But a country that seeks to change the international status quo might also turn to nonviolent policy levers such as foreign aid. It is generally accepted that foreign aid is used by countries as a tool of policy exchange [@bueno2009political], at the heart of which is a desire by the country giving aid to change some behavior or policy on the part of the country receiving it. If these intuitions are directionally true, then greater demand for change by a country should manifest both as an increase in the likelihood of MID initiation and in a country's ODA commitments.
+
+## Explanatory Variables
+
+To capture the main explanatory factors of interest, variables from a few different sources are used. First, to capture power, I draw on the dyadic dispute outcome expectations (DOE) measure developed by @carroll2019prediction and collapsed to country-year aggregates by @kent2020measuring. DOE values are based on predicted disputed outcomes from a super learner, which is an ensemble approach to machine learning where multiple model predictions are aggregated in such a way that optimizes the accuracy of the predictions. The original data provided by @carroll2019prediction is dyadic, but because the analysis performed here focuses on monadic country behavior in response to systemic factors, a country specific measure is needed. @kent2020measuring generated an aggregate measure that reflects the average probability that a country does not lose a militarized dispute, and the measure used here comes from his study.
+
+The second main concept that must be operationalized is dissatisfaction. A quantitative measure of dissatisfaction has remained elusive until recently. The difficulty in operationalizing dissatisfaction lies in the fact that dissatisfaction is multi-dimensional and that such a measure requires specifying an ideal point and a status quo relative to that ideal point. What data and information should be used to quantify these factors has been unclear, and few attempts have been made to find a solution. Measures based on UN voting similarity are adjacent to a measure of systemic dissatisfaction, but in reality they capture something much closer to alignment. However, @kent2020measuring recently developed a measure of systemic dissatisfaction, taking inspiration from Gilpin's [-@gilpin1981war] conceptualization. To ensure the greatest coverage over time, @kent2020measuring uses measures that are valid across a long span of time, defining dissatisfaction in relation to a country's network centrality in four issue areas: military alliances, interstate trade, shared diplomatic relations, and arms transfers. A country's degree of network centrality across these issues is indicative of its benefits from the current status quo. Expected benefits are then derived by @kent2020measuring using aggregated DOE scores multiplied by a country's CINC (Country Index of National Capabilities) score. Dissatisfaction is then computed by taking the log ratio of expectations to benefits. As a first pass measure of dissatisfaction, there are certainly issues that might be raised about Kent's [-@kent2020measuring] approach. This would be a fruitful area of research for IR scholars to pursue, but for now, the proposed measure of dissatisfaction is the only one available. And, imperfections aside, the rationale behind its construction is sound. Powerful countries would arguably expect to get more out of the international system than weak countries, which is what this measure is intended to capture.
+
+Finally, to measure a country's average alignment with other countries in the international system, a measure based on UN voting alignment is used—specifically, the version developed by @baileyetal2017edsp which bases alignment on the degree to which countries have similar positions with respect to the Western Liberal International Order. The original measure is dyadic. To measure aggregate alignment, yearly average alignment is computed for each country in the dataset. The justification for this measure is that it provides a consistent way to measure, across countries, their degree of ideological alignment for or against the current international order. The idea is that countries that share similar views on this key question are, in general, more aligned in their foreign policy preferences and, hence, are more apt to want to change the international system in similar ways.
+
+## Empirical Models
+
+To test hypotheses 1-3, the following statistical models are estimated. In the first, MID initiation is the outcome. In the second, total ODA commitments are the outcome. A logit model is used for MID initiation and is specified as:
+
+$$
+\Pr(\text{MID}_{it} = 1) =  \Lambda(\beta_1 \text{Pwr}_{it} + \beta_2\text{Diss}_{it} + \beta_3\text{Align}_{it} + \gamma x_{it} + \alpha_i + \eta^\top\text{Spell}_{it})
+$${#eq-logit}
+
+In addition to terms for each of the main predictors of interest, the model also controls for the log of GDP per capita, which which comes from the World Bank. To adjust for country-specific dependence and cross-country heterogeneity, the model includes random country slopes. Finally, a cubic peace spells trend rounds off the model.
+
+To predict total ODA commitments, the following regression specification is used, which is estimated via pseudo-Poisson maximum likelihood (PPML):
+
+$$
+\text{ODA}_{it} = \exp(\beta_1 \text{Pwr}_{it} + \beta_2\text{Diss}_{it} + \beta_3\text{Align}_{it} + \gamma x_{it} + \alpha_i + \eta^\top T_{t}) + \epsilon_{it}
+$$ {#eq-ppml}
+
+The right-hand side variables remain the same as those the logit model, but instead of a peace spells trend, a cubic time trend rounds out the model.
+
+# Analysis
+
+The endogenized TGT framework yields three key predictions that the analysis is intended to test. The first is that more relative power predicts both more aggression and spending on aid, the second is that more dissatisfaction predictions more of each as well, and the third is that greater average alignment with other countries predicts less of each. The results shown in Figure 2 support each of these predictions. The figure is a coefficient plot that shows point estimates with their 95% confidence intervals for model parameters. Random country slopes and cubic trends are not shown. The estimated coefficient value and its standard error are noted above each point estimate with stars denoting statistical significance. The sign of the coefficients for power, dissatisfaction, and alignment are all in the expected direction. As countries become more powerful, they are both more likely to initiate MIDs and they are expected to commit more total ODA. The same is true when countries become more dissatisfied. Conversely, the more average alignment between a country and others in the international system, the lower its likelihood of initiating MIDs and the lower its expected ODA commitments. While all of the model estimates have the expected sign, the negative coefficient for alignment falls short of statistical significance in predicting expected ODA.
+
+![](figs/modelplot.png)
+
+These results are overall encouraging. By accounting for strategic interdependence among countries in the international system, we are able to account for the foreign policy behaviors of countries over a relatively broad period of time. However, since the estimated coefficients are from nonlinear models, their magnitude does not tell us what a change in one of these factors implies in substantive terms. Figure 3 shows the practical significance of these factors. The figure has six panels. Those to the left show predicted changes to the likelihood of MID initiation given a change in one of the explanatory variables. Those to the right show the same for expected ODA commitments. The top row shows predicted changes as a function power, the middle as a function of dissatisfaction, and the bottom as a function of alignment. Some of the results are stark. Going from low to high power increases the likelihood of MID initiation from under 5% to 10% and expected ODA commitments from negligible amounts to nearly 7.5 billion USD.
+
+![](figs/model_predictions.png)
+
+The results for dissatisfaction are even more substantial. Going from low to high dissatisfaction increases the likelihood of MID initiation from nearly 0% to over 20%, and it increases expected ODA commitments from near zero to just under 6 billion USD.
+
+The results for alignment are far more tame in comparison to those identified for power and dissatisfaction. This, actually, is unsurprising. In the Monte Carlo analysis that was used to study the theoretical model, average alignment's relationship with change-seeking activity was by far the noisiest and the most modest. The model estimates here indicate that going from low to high alignment decreases the likelihood of MID initiation from over 8% to 4%, and it decreases expected ODA commitments from 1.2 billion USD to 1 billion. However, even though the estimate for alignment with respect to ODA was not statistically significant, the practical difference it makes in ODA is quite large in absolute terms. The difference between 1.2 and 1 billion is a difference of 200 million US dollars. That is a large sum of money, even if it seems like a drop in the bucket compared to the magnitude of total ODA commitments.
+
+# Conclusion
+
+The TGT framework has a good track record of yielding empirically verified predictions, but the classic version of the theory is limited because it explicitly ignores strategic interdependence. This study overcomes this limitation and tests the implications with empirical data. The results are consistent with the predictions made by the updated theoretical model, demonstrating the usefulness of TGT but also the benefit of updating it to bring it more in line with a key aspect of international relations.
+
+One implication of this study is the utility of incorporating general-equilibrium thinking into theories about international politics. Such approaches do exist [e.g., @braumoeller2013great], but even when well received they often gain little traction. The complexity of general equilibrium approaches is probably the best explanation for this, as is the recent focus in the social sciences, and in IR in particular, on causal identification. This should not deter scholars interested in high-level, systemic approaches, but the incentives to focus on partial equilibrium questions will remain strong for the foreseeable future.
+
+Scholars also should not ignore partial equilibrium problems. General equilibrium approaches in IR deal with macro-issues, which is useful up to a point, but limiting when the subject of study is, as @lake2013theory puts it, "mid-level." The point is not that partial equilibrium problems are over-studied. Rather, it is that general equilibrium problems are under-studied.
+
+That means there is ample room to make contributions to general equilibrium approaches to IR, and even to expand on the approach taken in this study. One limitation of the TGT framework, and this study by extension, is the absence of a theory of change. The game theoretic set-up proposed here assumes a one-off interaction at a single point in time. What are the implications of incorporating time into the model and allowing country interactions to shape and reshape the international status quo from one point in time to the next? Would we observe a stable equilibrium between country foreign policies and the structure of the international system? Work by @braumoeller2013great suggests we would, but Braumoeller's understanding of country activity is different from that offered by the TGT framework.
+
+On the empirical side, this study provides some compelling evidence to support the theoretical argument presented here. However, measurement options are limited. Developing and validating a more extensive set of variables that we can use to proxy concepts such as systemic dissatisfaction is of greatest need. As with any descriptive study that takes a first pass at studying an issue, the results of this one are suggestive, but certainly not confirmatory, so caution is warranted in interpreting the empirical results—encouraging as they may be in light of the theoretical argument.
+
+Finally, if the empirical results are reliable, they show that change-seeking foreign policy is a double-edged sword. The factors that predict the likelihood that countries start conflicts with other countries are also the factors that predict how generous countries are with their foreign aid. Future research might consider what conditions lead countries to prefer promoting change through aid rather than through violent conflict. This is the idea of foreign policy substitutability, another another theme in the TGT framework but one that is bracketed in this study. Knowing what factors make aid more appealing than conflict are worth identifying if scholars and policymakers seek to promote a more peaceful world. This concern is especially important at the moment when the United States has drastically cut its foreign aid spending and is in the process of dismantling its foremost aid agency. Many European donors are making substantial cuts to aid as well. At the same time, the United States, by way of President Donald Trump, is making expansionist threats and not ruling out the use of force to take territory. If the concept of foreign policy substitutability has merit, the world seems poised to become a more violent place in the coming years as aid loses its prominence in countries' foreign policy portfolios.
+
+# Replication materials
+
+Analysis for this study was done using R version 4.2.1. Code and data to replicate the results are saved at the corresponding author's GitHub: https://milesdwilliams15.github.io.
+
+
+# References
