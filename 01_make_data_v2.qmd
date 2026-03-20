@@ -1,0 +1,47 @@
+---
+title: "Create Dataset (v2)"
+format: html
+---
+
+## Packages + helpers
+
+```{r}
+library(tidyverse)
+library(peacesciencer)
+library(odadata)
+source(
+  "https://raw.githubusercontent.com/milesdwilliams15/death-destruction-data/refs/heads/main/helpers/peacesciencer_extras.R"
+)
+```
+
+## Create data
+
+First, create the baseline country-year dataset.
+
+```{r}
+create_stateyears(
+  subset_years = 1816:2014
+) |>
+  add_icd_mics() |>
+  add_nmc() |>
+  add_sdp_gdp() |>
+  add_cow_majors() |>
+  add_contiguity() -> dt
+```
+
+Next, get Kent's dissatisfaction data.
+
+```{r}
+read_rds(
+      here::here(
+        "03_data",
+        "ken_final_measure.rds"
+      ) 
+    ) |>
+      mutate(
+        ccode = countrycode::countrycode(
+          stateabb, "cowc", "cown"
+        )
+      )
+```
+

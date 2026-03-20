@@ -17,31 +17,19 @@ library(patchwork)
 
 # read in the data
 dt <- read_rds(
-  here::here("03_data", "williams_final_data.rds")
+  here::here("03_data", "williams_final_data[ADDMICS].rds")
 )
 
-# only keep country years for the same data
-# between MIDs and foreign aid
-# dt <- drop_na(dt, aid)
-
 dt <- dt |>
   group_by(year) |>
   mutate(
-    power = log(exp(sdpest) / sum(exp(sdpest), na.rm = T) * percent_win),
-    sdpdis = log(expectations) - power
+    power = (exp(sdpest) / sum(exp(sdpest), na.rm = T))
   )
 
+## post ww2 data
 
-# only keep years > 1972
-dt <- filter(dt, year > 1972)
+dt <- filter(dt, year > 1945)
 
-dt <- dt |>
-  group_by(year) |>
-  mutate(
-    other_mids = gmlmidonset * (1 - gmlmidonset_init),
-    other_aid  = log((sum(aid, na.rm = T) - aid) / 
-      (n() - 1))
-  )
 
 # summary stats -----------------------------------------------------------
 
@@ -54,7 +42,7 @@ maxna    <- function(x) max(x, na.rm = T)
 
 datasummary(
   data = dt,
-  formula = gmlmidonset_init + aid + kappavv + percent_win +
+  formula = miconset_init + oda_committed + kappavv + power +
     dissatisfaction ~ meanna + medianna + sdna + minna + maxna,
   na.rm = T
 )
@@ -70,49 +58,51 @@ deets <- function(data, drop.na.by) {
   )
 }
 
-deets(dt, gmlmidonset_init)
-deets(dt, aid)
+deets(dt |> filter(year < 2015), miconset_init)
+deets(dt, oda_committed)
+deets(dt, kappavv)
+deets(dt, power)
+deets(dt, dissatisfaction)
 
 # regression analysis -----------------------------------------------------
 
 ## Fit the models ----
+
+### Modeling change seeking foreign policies:
 gam(
-  gmlmidonset_init ~ 
-    percent_win + 
+  miconset_init ~ 
+    power + 
     dissatisfaction +
     kappavv +
-    wbgdppc2011est +
-    poly(gmlmidinitspell, 3) +
+    poly(micspell, 3) +
     s(ccode, bs = "re"),
-  data = dt,
+  data = dt |> filter(year < 2015),
   family = binomial
-) -> logitfit
+) -> init_fit
 gam(
-  aid ~ 
-    percent_win + 
+  oda_committed ~ 
+    power + 
     dissatisfaction +
     kappavv +
-    wbgdppc2011est +
     poly(year, 3) +
     s(ccode, bs = "re"),
   data = dt,
   family = quasipoisson
-) -> ppmlfit
+) -> aid_fit
 
 ## Summarize in coefplot ----
 cm <- c(
-  "percent_win"     = "Power",
+  "power"     = "Power",
   "kappavv"         = "Alignment",
-  "dissatisfaction" = "Dissatisfaction",
-  "wbgdppc2011est"  = "GDP/capita"
+  "dissatisfaction" = "Dissatisfaction"
 )
 f <- function(x) format(round(x, 3), big.mark=",")
 gm <- list(
   list("raw" = "nobs", "clean" = "N", "fmt" = f))
 modelplot(
   models = list(
-    "MID Initiation (Logit)" = logitfit,
-    "Foreign Aid (PPML)" = ppmlfit
+    "MIC Initiation (Logit)" = init_fit,
+    "Foreign Aid (PPML)" = aid_fit
   ),
   # vcov = "HC0",
   # cluster = "ccode",
@@ -124,27 +114,22 @@ modelplot(
     geom_vline(xintercept = 0, lty = 2)
   )
 ) +
-  facet_wrap(~ model, scales = "free_x") +
+  facet_wrap(~ model, scales = "free_x", ncol = 2) +
   geom_text(
     aes(x = estimate,
         y = term,
         label = paste0(
           round(estimate, 3),
-          gtools::stars.pval(p.value),
-          "\n(", round(std.error, 3), ")")),
-    vjust = -.3,
+          gtools::stars.pval(p.value))),
+    vjust = -1,
     size = 3
   ) +
   labs(
-    subtitle = str_wrap(
-      "Note: .p < 0.1, *p < 0.05, **p < 0.01, ***p < 0.001. Regression estimates with (standard errors) shown above the point estimates. Models include random country slopes and cubic trends (not shown).",
-      width = 80
-    ),
-    x = "Coefficient with 95% CIs",
-    caption = str_wrap(
-      "Figure 2: Regression model estimates with 95% confidence intervals.",
-      width = 80
-    )
+    # subtitle = str_wrap(
+    #   "Note: .p < 0.1, *p < 0.05, **p < 0.01, ***p < 0.001.",
+    #   width = 150/1.5
+    # ),
+    x = "Coefficient with 95% CIs"
   ) +
   theme(
     plot.caption = element_text(
@@ -160,22 +145,66 @@ modelplot(
       hjust = .5
     )
   )
+
 ggsave(
   here::here(
     "02_report",
     "figs",
     "modelplot.png"
   ),
-  height = 5,
+  height = 4/1.5,
+  width = 8/1.5
+)
+
+library(ggregtab)
+
+bind_rows(
+  tidy_coeftest(
+    init_fit,
+    model = "MIC Initiations (Logit)"
+  ),
+  tidy_coeftest(
+    aid_fit,
+    model = "ODA Commitments (PPML)"
+  )
+) |>
+  filter(
+    term %in% c(
+      "power",
+      "dissatisfaction",
+      "kappavv"
+    )
+  ) |>
+  ggregtab(ratio = .3) +
+  labs(
+    title = str_wrap(
+      "Table 2: Regression model estimates"
+    )
+  ) +
+  scale_y_discrete(
+    labels = c(
+      "Alignment",
+      "Dissatisfaction",
+      "Power"
+    )
+  )
+
+ggsave(
+  here::here(
+    "02_report",
+    "figs",
+    "regtab.png"
+  ),
+  height = 3,
   width = 6
 )
 
 ## Visualize marginal effects ----
 ## For MIDs
 plot_model(
-  logitfit,
+  init_fit,
   type = "pred",
-  term = "percent_win",
+  term = "power",
   vcov.fun = vcovCL(
     logitfit,
     cluster = dt$ccode,
@@ -184,10 +213,11 @@ plot_model(
 ) + 
   labs(
     x = expression("Power"%->%""),
-    y = "Pr. MID Initiation"
+    y = NULL,
+    title = NULL
   ) -> p1
 plot_model(
-  logitfit,
+  init_fit,
   type = "pred",
   term = "dissatisfaction",
   vcov.fun = vcovCL(
@@ -198,10 +228,11 @@ plot_model(
 ) + 
   labs(
     x = expression("Dissatisfaction"%->%""),
-    y = "Pr. MID Initiation"
+    y = NULL,
+    title = NULL
   ) -> p2
 plot_model(
-  logitfit,
+  init_fit,
   type = "pred",
   term = "kappavv",
   vcov.fun = vcovCL(
@@ -212,17 +243,18 @@ plot_model(
 ) + 
   labs(
     x = expression("Alignment"%->%""),
-    y = "Pr. MID Initiation"
+    y = NULL,
+    title = NULL
   ) -> p3
 
 ## For aid
 rescalefun <- function(x) {
-  paste0(scales::dollar(x / 1e09), " bn")
+  paste0(scales::dollar(x / 1e03), " bn")
 }
 plot_model(
-  ppmlfit,
+  aid_fit,
   type = "pred",
-  term = "percent_win",
+  term = "power",
   vcov.fun = vcovCL(
     logitfit,
     cluster = dt$ccode,
@@ -234,10 +266,11 @@ plot_model(
   ) +
   labs(
     x = expression("Power"%->%""),
-    y = "Foreign Aid"
+    y = NULL,
+    title = NULL
   ) -> p4
 plot_model(
-  ppmlfit,
+  aid_fit,
   type = "pred",
   term = "dissatisfaction",
   vcov.fun = vcovCL(
@@ -251,10 +284,11 @@ plot_model(
   ) +
   labs(
     x = expression("Dissatisfaction"%->%""),
-    y = "Foreign Aid"
+    y = NULL,
+    title = NULL
   ) -> p5
 plot_model(
-  ppmlfit,
+  aid_fit,
   type = "pred",
   term = "kappavv",
   vcov.fun = vcovCL(
@@ -268,11 +302,12 @@ plot_model(
   ) +
   labs(
     x = expression("Alignment"%->%""),
-    y = "Foreign Aid"
+    y = NULL,
+    title = NULL
   ) -> p6
 
 col_label_1 <- wrap_elements(
-  panel = grid::textGrob('(MID Initiation)')
+  panel = grid::textGrob('(MIC Initiation)')
 )
 col_label_2 <- wrap_elements(
   panel = grid::textGrob('(Aid Commitments)')
@@ -289,23 +324,7 @@ col_label_1 + col_label_2 + p1 + p4 + p2 + p5 + p3 + p6 +
   plot_layout(
     ncol = 2,
     heights = c(.1, 1, 1, 1)
-  ) &
-  labs(
-    title = NULL,
-    y = NULL
-  ) &
-  theme(
-    axis.title.x = element_text(
-      face = "italic",
-      hjust = .5
-    ),
-    plot.caption = element_text(
-      size = 12,
-      hjust = 0
-    ),
-    plot.caption.position = "plot"
-  )
-
+  ) 
 ggsave(
   here::here(
     "02_report",
@@ -316,3 +335,5 @@ ggsave(
   width = 6,
   dpi = 500
 )
+
+

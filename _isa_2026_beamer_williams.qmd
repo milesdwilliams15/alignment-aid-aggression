@@ -1,0 +1,148 @@
+---
+title: "Alignment, Aid, and Aggression: Bringing Strategic Interdependence into the Two-Good Theory of Foreign Policy"
+author: "Miles D. Williams"
+institute: "Denison University"
+date: "March 25, 2026"
+bibliography: '../01_citations/ref.bib'
+biblio-style: apsr
+format:
+  beamer:
+    theme: Madrid
+    colortheme: seahorse
+    fonttheme: structurebold
+    slide-level: 2
+    keep-tex: false
+execute:
+  echo: false
+  warning: false
+  message: false
+---
+
+## Why Foreign Policy Varies: The Puzzle
+
+- Why are some countries more aggressive and interventionist than others?
+- The *Two-Good Theory* (TGT) [@palmer2011theory] offers a compelling framework:
+  - Countries optimize between **maintenance** (preserving liked aspects of the status quo) and **change** (revising disliked aspects)
+  - Predictions: more powerful and more dissatisfied countries are more change-seeking
+- **But TGT ignores strategic interdependence** — countries do not make foreign policies in isolation
+
+## The Gap in TGT Has Real Consequences
+
+- Foreign policy is inherently a **general equilibrium** problem
+- What one country does shapes what others can achieve
+- Treating foreign policy as a partial equilibrium problem may yield:
+  - Missed predictions
+  - Incorrect ceteris paribus claims [e.g., @palmer2011theory]
+- This study formalizes a **game-theoretic extension** to TGT that accounts for strategic interdependence and tests its implications
+
+---
+
+## Countries Trade Off Change and Maintenance Under Scarcity
+
+- Classic TGT utility: $U = Q_m^{\pi_1} \times Q_c^{\pi_2}$, subject to budget $b = Q_m + \Omega Q_c$
+- Key parameters:
+  - $\pi_2 / \pi_1$: relative dissatisfaction (preference for change over maintenance)
+  - $b$: power (resource endowment)
+  - $\Omega$: comparative cost of change (decreases with power)
+- Optimal demands: $Q_m = \pi_1 b$, $Q_c = \pi_2 b / \Omega$
+
+## Foreign Policy Alignment Links Countries' Choices
+
+- Extended model: country $i$'s realized change and maintenance depends on $j$'s activities:
+
+$$Q_{ic} = q_{ic} + \alpha q_{jc}$$
+$$Q_{im} = q_{im} + q_{jm}$$
+
+- $\alpha \in (-1, 1)$: **foreign policy alignment**
+  - $\alpha \to 1$: aligned — others' change-seeking helps $i$
+  - $\alpha \to -1$: adversarial — others' change-seeking harms $i$
+- Maintenance acts as a **public good**; change is a **rival good** *or* **public good** shaped by alignment
+- A unique Nash Equilibrium exists (by Rosen's [-@rosen1965existence] concavity proof)
+
+---
+
+## Monte Carlo Analysis Yields Three Predictions
+
+- Monte Carlo analysis: 10,000 simulated international systems, $N = 10$ countries each
+- Exogenous parameters drawn randomly: alignment $\alpha$, power $b$, dissatisfaction $\pi_2$
+
+![Partial regression slopes from Monte Carlo analysis](figs/monte_carlo_partials_mpsa.png){width=80%}
+
+## Monte Carlo Analysis Yields Three Predictions (cont.)
+
+- Predictions from endogenized TGT:
+  - **$H_1$**: Power $\uparrow$ → change-seeking $\uparrow$
+  - **$H_2$**: Dissatisfaction $\uparrow$ → change-seeking $\uparrow$
+  - **$H_3$**: Alignment $\uparrow$ → change-seeking $\downarrow$
+- Intuition: aligned countries can free-ride on each other's efforts to change the status quo; misaligned countries must work harder to move the system in their preferred direction
+- This *reverses* the informal suggestion by @palmer2011theory that higher threat leads to more maintenance-seeking
+
+---
+
+## Two Change-Seeking Behaviors Are Tested
+
+- **Outcome 1**: MIC (Militarized Interstate Confrontation) initiation (1946–2014) [@gibler2024militarized]
+  - Binary: did a country initiate a conflict involving use of force?
+- **Outcome 2**: Total bilateral ODA commitments (1966–2023, OECD DAC3a)
+  - Continuous: millions of 2023 constant USD
+- Both are argued by @palmer2011theory to reflect change-seeking foreign policy
+
+## Key Explanatory Variables
+
+| Concept | Measure | Source |
+|---|---|---|
+| Power | Surplus Domestic Product (SDP), share of global total | @andersetal2020bbgb |
+| Dissatisfaction | Log ratio of expected to realized benefits | @kent2020measuring |
+| Alignment | Average UN GA voting similarity (liberal order orientation) | @baileyetal2017edsp |
+
+- Models: **Logit** (MIC initiation) and **PPML** (ODA commitments)
+- Both include random country slopes and cubic time/peace spell trends
+
+---
+
+## Results Consistent with Theory
+
+![Model Estimates](figs/modelplot.png){width=85%}
+
+- Power and dissatisfaction: positive, significant in both models
+- Alignment: negative in both models; significant for ODA, *marginally* significant for MIC
+
+## Effects Are Substantively Large
+
+::: {.columns}
+::: {.column width="50%"}
+
+![Predicted marginal effects](figs/model_predictions_isa.png){width=90%}
+:::
+
+::: {.column width="50%"}
+
+- Power: going from near-zero to 40%+ of global SDP → MIC probability rises from ~0% to ~15%
+- Dissatisfaction: low to high → MIC probability rises from ~0% to ~8%; ODA rises from ~\$0 to ~\$2B
+- Alignment: low to high → MIC probability falls from ~2.5% to ~1.3%; ODA falls from ~\$0.7B to ~\$0.3B
+
+:::
+:::
+
+---
+
+## TGT Explains Conflict and Aid Better When Adjusting for Alignment
+
+- Results support all three hypotheses derived from the endogenized TGT
+- Consistent with classic TGT (power and dissatisfaction → change-seeking)
+- New prediction confirmed: **alignment reduces change-seeking**
+- Alternative theories [@gilpin1981war; @braumoeller2013great] cannot fully account for the independent effects of power and alignment
+
+## Future Work Should Extend These Findings
+
+- Limitations and open questions:
+  - Better measures of systemic dissatisfaction needed
+  - Maintenance-seeking outcomes (MIC reciprocation, defense spending) remain difficult to test cleanly due to selection bias and conceptual overlap
+  - No dynamic theory of how foreign policies reshape the status quo over time
+- Broader implication: as U.S. foreign aid collapses and bellicosity rises, **substitution between aid and conflict** deserves urgent attention
+- General equilibrium approaches to IR are underutilized — this study shows their value
+
+## References {.allowframebreaks}
+
+::: {#refs}
+:::

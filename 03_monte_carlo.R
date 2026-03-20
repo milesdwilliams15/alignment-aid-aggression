@@ -144,7 +144,23 @@ nashdt |>
     method = "lm",
     se = F,
     col = "steelblue"
-  ) -> p1
+  ) +
+  theme(
+    axis.text = element_blank(),
+    panel.border = element_rect(
+      color = "gray",
+      linetype = 1
+    ),
+    plot.caption = element_text(
+      hjust = 0,
+      size = 12
+    ),
+    plot.caption.position = "plot"
+  ) +
+  labs(
+    x = NULL,
+    y = NULL
+  )-> p1
 
 ### The partial relationship
 ### for b and ci:
@@ -163,6 +179,22 @@ nashdt |>
     method = "lm",
     se = F,
     col = "steelblue"
+  ) +
+  theme(
+    axis.text = element_blank(),
+    panel.border = element_rect(
+      color = "gray",
+      linetype = 1
+    ),
+    plot.caption = element_text(
+      hjust = 0,
+      size = 12
+    ),
+    plot.caption.position = "plot"
+  ) +
+  labs(
+    x = NULL,
+    y = NULL
   ) -> p2
 
 ### The partial relationship
@@ -182,6 +214,22 @@ nashdt |>
     method = "lm",
     se = F,
     col = "steelblue"
+  ) +
+  theme(
+    axis.text = element_blank(),
+    panel.border = element_rect(
+      color = "gray",
+      linetype = 1
+    ),
+    plot.caption = element_text(
+      hjust = 0,
+      size = 12
+    ),
+    plot.caption.position = "plot"
+  ) +
+  labs(
+    x = NULL,
+    y = NULL
   ) -> p3
 
 ### Combine as a single plot
@@ -194,26 +242,10 @@ nashdt |>
   plot_annotation(
     title = "Impact on change-seeking by...",
     caption = str_wrap(
-      "Figure 1: Partial prediction plots from a regression model fit to Monte Carlo data drawn from the data-generating process implied by the theoretical model.",
+      "Partial prediction plots from a regression model fit to Monte Carlo data drawn from the data-generating process implied by the theoretical model.",
       width = 75
     )
-  ) &
-  theme(
-    axis.text = element_blank(),
-    panel.border = element_rect(
-      color = "gray",
-      linetype = 1
-    ),
-    plot.caption = element_text(
-      hjust = 0,
-      size = 12
-    ),
-    plot.caption.position = "plot"
-  ) &
-  labs(
-    x = NULL,
-    y = NULL
-  )
+  ) 
 
 ggsave(
   here::here(
@@ -225,3 +257,4 @@ ggsave(
   width = 6,
   dpi = 500
 )
+
